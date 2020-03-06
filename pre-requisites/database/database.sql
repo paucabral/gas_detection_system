@@ -18,7 +18,7 @@ USE `gas_detection_db` ;
 -- Table `gas_detection_db`.`accounts`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `gas_detection_db`.`accounts` (
-  `acc_id` INT NOT NULL,
+  `acc_id` INT NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(255) NOT NULL,
   `password` TEXT NOT NULL,
   `fname` VARCHAR(255) NULL,
@@ -35,7 +35,6 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `gas_detection_db`.`devices` (
   `device_id` INT NOT NULL,
   `room` VARCHAR(255) NOT NULL,
-  `acc_id` INT NULL,
   `accounts_acc_id` INT NOT NULL,
   PRIMARY KEY (`device_id`),
   CONSTRAINT `fk_devices_accounts1`
@@ -50,8 +49,7 @@ ENGINE = InnoDB;
 -- Table `gas_detection_db`.`notifications`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `gas_detection_db`.`notifications` (
-  `notif_id` INT NOT NULL,
-  `device_id` INT NOT NULL,
+  `notif_id` INT NOT NULL AUTO_INCREMENT,
   `room` VARCHAR(255) NULL,
   `gas` VARCHAR(255) NOT NULL,
   `reading` VARCHAR(255) NOT NULL,
