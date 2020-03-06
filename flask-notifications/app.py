@@ -27,7 +27,11 @@ def index():
         room = cursor.fetchone()['room']
         print(room)
 
-        cursor.execute('INSERT INTO notifications(devices_device_id, room, gas, reading) VALUES({}, "{}", "{}", "{}")'.format(device_id, room, gas, reading))
+        cursor.execute('SELECT accounts_acc_id FROM devices WHERE device_id = {}'.format(device_id))
+        acc_id = cursor.fetchone()['accounts_acc_id']
+        print(room)
+        
+        cursor.execute('INSERT INTO notifications(devices_device_id, room, gas, reading, accounts_acc_id) VALUES({}, "{}", "{}", "{}", {})'.format(device_id, room, gas, reading, acc_id))
         conn.commit()
     
     return "POST request success"
