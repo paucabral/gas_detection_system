@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome,brave,opera">
 
-    <title>BAG-YO || MANAGE</title>
+    <title>Gas Detection System || Manage Devices</title>
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
@@ -62,14 +62,14 @@
 		</style>
 
 		<div class="header" id="myHeader">
-		  <h2><center>Manage</center></h2>
+		  <h2><center>Registered Devices</center></h2>
 		</div>
 		
 	<!-- | SIDE NAVBAR | -->
     <div class="wrapper">
         <nav id="sidebar">
             <div class="sidebar-header">
-                <h3>BAG-YO</h3>	
+                <h3>Gas Detection System</h3>	
             </div>
 
             <ul class="list-unstyled components">
@@ -84,10 +84,10 @@
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Options</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
-                            <a href="/fingerprints/{{ acc_id }}/register/">Register</a> <!-- REINHOLD -->
+                            <a href="/devices/{{ acc_id }}/register/">Register Device</a> <!-- REINHOLD -->
                         </li>
                         <li>
-                            <a style="background-color:#f1f1f1; color:#093145;" href="/fingerprints/{{ acc_id }}/manage/">Manage</a>
+                            <a href="/devices/{{ acc_id }}/manage/">Manage Devices</a>
                         </li>
                         <li>
                             <a href="/manage-accounts/profile/{{ acc_id }}">Profile</a> <!-- GIO -->
@@ -136,7 +136,7 @@
 		<!-- *REAL CONTENT STARTS HERE* --> 
 			<!-- REGISTERED PRINTS -->
 			<div class="gray col-sm-12 col-xs-12">
-			<h2><center><b>REGISTERED PRINTS</b></center></h2>
+			<h2><center><b>REGISTERED DEVICES</b></center></h2>
 
 			<style>
 					th, td {
@@ -153,22 +153,18 @@
 
 			<table id="tableID" style="width:100%">
 			  <thead>
-				<th>ID</th>
-				<th>User</th> 
-				<th>Phone Number</th>
+				<th>Device ID</th>
+				<th>Room</th>
 				<th></th>
 			  </thead>
-			  	{% for i in registered_prints %}
+			  	{% for i in devices %}
 				  <tr>
-					<td>{{ i.print_id }}</td>
-					<td>{{ i.fname }} {{ i.lname }}</td>
-					<td>{{ i.phone_num }}</td>
+					<td>{{ i.device_id }}</td>
+					<td>{{ i.room }}</td>
 					<td>
 						<form method="POST">{% csrf_token %}
-						<!-- <input type="image" id="myimage" src="{% static 'img/delete.png' %}" height="30" width="30" name="print_id" value="{{ i.print_id }}"/> -->
-						<button type="submit" name="ActionBTN" value="1" class="btn btn-danger">Delete</button><input type="hidden" name="print_id" value="{{i.print_id}}" />
+						<button type="submit" name="ActionBTN" value="1" class="btn btn-danger">Delete</button><input type="hidden" name="device_id" value="{{i.device_id}}" />
 						</form>
-						<!-- <input type="image" id="myimage" src="{% static 'img/edit.png' %}" height="30" width="30"/> -->
 					</td>
 				</tr>
 				{% endfor %}

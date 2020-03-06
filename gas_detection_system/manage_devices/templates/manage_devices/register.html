@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome,brave,opera">
 
-    <title>BAG-YO || REGISTER</title>
+    <title>Gas Detection System || Register Device</title>
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
@@ -66,7 +66,7 @@
   <div class="wrapper">
     <nav id="sidebar">
         <div class="sidebar-header">
-            <h3>BAG-YO</h3>	
+            <h3>Gas Detection System</h3>	
         </div>
 
         <ul class="list-unstyled components">
@@ -80,12 +80,12 @@
             <li class="active">
                 <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Options</a>
                 <ul class="collapse list-unstyled" id="pageSubmenu">
-                    <li>
-                        <a style="background-color:#f1f1f1; color:#093145;" href="/fingerprints/{{ acc_id }}/register/">Register</a> <!-- REINHOLD -->
-                    </li>
-                    <li>
-                        <a href="/fingerprints/{{ acc_id }}/manage/">Manage</a>
-                    </li>
+                  <li>
+                    <a href="/devices/{{ acc_id }}/register/">Register Device</a> <!-- REINHOLD -->
+                </li>
+                <li>
+                    <a href="/devices/{{ acc_id }}/manage/">Manage Devices</a>
+                </li>
                     <li>
                         <a href="/manage-accounts/profile/{{ acc_id }}">Profile</a> <!-- GIO -->
                     </li>
@@ -133,19 +133,16 @@
 			<div class="container">
                 <div class="row">
                   <div class="col-sm">
-					<h7>PROCEDURES</h7>
+					<h7>PROCEDURE</h7>
 					<style>
 					h7	{
 					font-size: 36px;
 					font-weight: bold;
 					}
 					</style>
-				  <p>1. Enter ID of the bag.</p>
-				  <p>2. Enter First Name.</p>
-				  <p>3. Enter Last Name.</p>
-				  <p>4. Enter Phone Number.</p>
-				  <p>5. Accept and agree to terms and regulations.</p>
-				  <p>6. Click Register.</p>
+				  <p>1. Enter the device ID.</p>
+				  <p>2. Enter the room name where the device is located.</p>
+				  <p>3. Click Register.</p>
 				  <style>
 				  p	{
 				  color: black;
@@ -158,33 +155,18 @@
           <!--pau branch2-->
             <form method="POST">{% csrf_token %}
                 <div class="form-group row">
-                    <label for="inputPassword" class="col-sm-2 col-form-label">ID</label>
+                    <label for="inputPassword" class="col-sm-2 col-form-label">Device ID</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="inputPassword" placeholder="Fingerprint ID" name="print_id" required>
+                      <input type="text" class="form-control" id="inputPassword" placeholder="Device ID" name="device_id" required>
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label for="inputPassword" class="col-sm-2 col-form-label">First Name</label>
+                    <label for="inputPassword" class="col-sm-2 col-form-label">Room</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="inputPassword" placeholder="First Name" name="fname" required>
+                      <input type="text" class="form-control" id="inputPassword" placeholder="Room" name="room" required>
                     </div>
                   </div>
-				  <div class="form-group row">
-                    <label for="inputPassword" class="col-sm-2 col-form-label">Last Name</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="inputPassword" placeholder="Last Name" name="lname" required>
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="inputPassword" class="col-sm-2 col-form-label">Phone Number</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="inputPassword" placeholder="11-Digit Contact Number" name="phone_num">
-                    </div>
-                  </div>
-                <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
-                  <label class="form-check-label" for="exampleCheck1">Agree to terms and regulations</label>
-                </div><br>
+                  <br>
                 <button type="submit" class="button">Register</button>
 				
               </form><br>
