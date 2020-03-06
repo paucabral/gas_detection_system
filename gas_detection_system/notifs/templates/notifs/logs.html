@@ -164,11 +164,13 @@
 					</thead>
 
 					{% for i in notifs %}
-					<td>{{ i.devices_device_id }}</td>
-					<td>{{ i.room }}</td>
-					<td>{{ i.gas }}</td>
-					<td>{{ i.reading }}</td>
-					<td>{{ i.time }}</td>
+					<tr>
+						<td>{{ i.devices_device_id }}</td>
+						<td>{{ i.room }}</td>
+						<td>{{ i.gas }}</td>
+						<td>{{ i.reading }}</td>
+						<td>{{ i.time }}</td>
+					</tr>
 					{% endfor %}
 				</table>	
 			</div>

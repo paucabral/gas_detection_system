@@ -34,13 +34,14 @@
 				<th>Reading</th>
 				<th>Time</th>
 			  </thead>
-
 			  {% for i in notifs %}
+			  <tr>
 				<td>{{ i.devices_device_id }}</td>
 				<td>{{ i.room }}</td>
 				<td>{{ i.gas }}</td>
 				<td>{{ i.reading }}</td>
 				<td>{{ i.time }}</td>
-			  {% endfor %}
+			  </tr>
+				{% endfor %}
 			</table>	
 		</div>
