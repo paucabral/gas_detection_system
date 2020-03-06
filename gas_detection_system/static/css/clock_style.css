@@ -1,0 +1,18 @@
+#date
+{
+	font-family: 'Poppins', sans-serif;
+	border:2px dashed #43abc8;
+	color:white;
+	font-size:40px;
+	width:auto;
+	margin-top:10px;
+}
+#time
+{
+	font-family: 'Poppins', sans-serif;
+	border:2px dashed #43abc8;
+	font-size:40px;
+	color:white;
+	width:auto;
+	margin-left:0px;
+}

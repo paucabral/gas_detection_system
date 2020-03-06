@@ -1,0 +1,180 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome,brave,opera">
+
+    <title>Gas Detection System || Profile</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+	
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/profile_style.css' %}">
+
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<!-- TEMPLATE STARTS HERE -->
+	<!-- | HEADER | -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<style>
+		body {
+		  margin: 0;
+		  font-family: Arial, Helvetica, sans-serif;
+		}
+
+		.top-container {
+		  background-color: #f1f1f1;
+		  padding: 30px;
+		  text-align: center;
+		}
+
+		.header {
+		  padding: 10px 16px;
+		  background: #093145;
+		  color: #f1f1f1;
+		}
+
+		.content {
+		  padding: 16px;
+		}
+
+		.sticky {
+		  position: fixed;
+		  top: 0;
+		  width: 100%;
+		}
+
+		.sticky + .content {
+		  padding-top: 180px;
+		}
+		</style>
+
+		<div class="header" id="myHeader">
+		  <h2><center>Profile</center></h2>
+		</div>
+		
+	<!-- | SIDE NAVBAR | -->
+    <div class="wrapper">
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>BAG-YO</h3>	
+            </div>
+
+            <ul class="list-unstyled components">
+                <p> <center> <img src="{% static 'img/logo.png' %}" width="180" height="180"> </center></p>
+                <li>
+                    <a href="/home/{{ acc_id }}/">Home</a>
+                </li>
+                <li>
+                  <a href="/home/{{ acc_id }}/logs/">Logs</a>
+                </li>
+                <li class="active">
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Options</a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                        <li>
+                            <a href="/fingerprints/{{ acc_id }}/register/">Register</a> <!-- REINHOLD -->
+                        </li>
+                        <li>
+                            <a href="/fingerprints/{{ acc_id }}/manage/">Manage</a>
+                        </li>
+                        <li>
+                            <a style="background-color:#f1f1f1; color:#093145;" href="/manage-accounts/profile/{{ acc_id }}">Profile</a> <!-- GIO -->
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="/">Logout</a>
+                </li>
+            </ul>
+        </nav>
+	
+	<!-- | SCRIPTS | -->
+	<!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+    </script>
+	
+<!-- *TEMPLATE ENDS HERE* -->
+
+<!-- CONTENT PLACEMENT AND BUTTON COLLAPSE -->            
+		<!-- START COLLAPSE EFFECT -->
+        <div id="content">
+            <body class="body1">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <span>Toggle Sidebar</span>
+                    </button>
+                </div>
+            </nav>
+            </body>
+            <div class="container">
+                <div class="row">
+                  <div class="col-sm">
+                    <img src="{% static 'img/logo.png' %}" class="blah" alt="your image">
+                  </div>
+                  <div class="col-sm">
+                    <form method="POST">{% csrf_token %}
+                        <div class="form-group">
+                          <label for="username">Username</label>
+                          <input type="text" class="form-control" placeholder="Username" name="username" value="{{ acc.username }}">
+                          <small id="name" class="form-text text-muted"></small>
+                        </div>
+                        <div class="form-group">
+                          <label for="fname">First Name</label>
+                          <input type="text" class="form-control" placeholder="First Name" name="fname" value="{{ acc.fname }}">
+                          <small id="name" class="form-text text-muted"></small>
+                        </div>
+                        <div class="form-group">
+                          <label for="lname">Last Name</label>
+                          <input type="text" class="form-control" placeholder="Last Name" name="lname" value="{{ acc.lname }}">
+                          <small id="name" class="form-text text-muted"></small>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Email</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email" name="email" value="{{ acc.email }}">
+                            <small id="emailHelp" class="form-text text-muted">Please provide a valid email address.</small>
+                        </div>
+                        <div class="form-group">
+                          <label for="contact_num">Phone Number</label>
+                          <input type="text" class="form-control" placeholder="Phone Number" name="contact_num" value="{{ acc.contact_num }}">
+                          <small id="name" class="form-text text-muted"></small>
+                        </div>
+                        <div class="form-group">
+                          <label for="password">Password</label>
+                          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
+                          <small id="emailHelp" class="form-text text-muted">Enter current password to apply changes on this account. Otherwise, enter a new password for this account inline with the changes above.</small>
+                        </div>
+                        <button type="submit" class="button">Update</button>
+                      </form>
+                  </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm">
+
+                    </div>
+                </div>
+              </div>
+    </div>
+</body>            
+</html>

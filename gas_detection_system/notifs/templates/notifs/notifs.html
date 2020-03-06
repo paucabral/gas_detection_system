@@ -1,0 +1,46 @@
+{% load static %}
+<!-- Bootstrap CSS CDN -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+	
+<!-- Our Custom CSS -->
+<link rel="stylesheet" href="{% static 'css/home_style.css' %}">
+
+<link rel="stylesheet" href="{% static 'css/datatables.min.css' %}">
+
+<!-- Font Awesome JS -->
+<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+
+<div id="my_div" class="gray col-sm-12 col-xs-12">
+			<h2><center><b>NOTIFICATIONS</b></center></h2>
+
+			<style>
+					th, td {
+					  padding: 8px;
+					  text-align: center;
+					}
+					th	{
+						background-color: black;
+					  	color: #ffff;
+					}
+			</style>
+
+
+			<table id="tableID" style="width:100%" http-equiv="refresh" content="1">
+			  <thead>
+				<th>Device ID</th>
+				<th>Room</th> 
+				<th>Gas Type</th>
+				<th>Reading</th>
+				<th>Time</th>
+			  </thead>
+
+			  {% for i in notifs %}
+				<td>{{ i.devices_device_id }}</td>
+				<td>{{ i.room }}</td>
+				<td>{{ i.gas }}</td>
+				<td>{{ i.reading }}</td>
+				<td>{{ i.time }}</td>
+			  {% endfor %}
+			</table>	
+		</div>

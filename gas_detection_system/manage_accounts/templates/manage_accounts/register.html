@@ -1,0 +1,99 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome,brave,opera">
+
+    <title>Gas Detection System || Register</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+	
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/logout_style.css' %}">
+
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<!-- TEMPLATE STARTS HERE -->
+	<!-- | HEADER | -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<style>
+		body {
+		  margin: 0;
+		  font-family: Arial, Helvetica, sans-serif;
+		}
+
+		.top-container {
+		  background-color: #;
+		  padding: 30px;
+		  text-align: center;
+		}
+
+		.header {
+		  padding: 10px 16px;
+		  background: #093145;
+		  color: #f1f1f1;
+		}
+
+		.content {
+		  padding: 16px;
+		}
+
+		.sticky {
+		  position: fixed;
+		  top: 0;
+		  width: 100%;
+		}
+
+		.sticky + .content {
+		  padding-top: 180px;
+		}
+		</style>
+
+		<div class="header" id="myHeader">
+		  <h2><center>Register</center></h2>
+		</div>
+<!-- TEMPLATE ENDS HERE -->
+		
+<!-- CONTENT STARTS HERE --> 
+	<div class="container">
+                <div class="row">
+                  <div class="col-sm-12 col-xs-12"> 
+				  <!-- THIS IS BROKEN PA, ANY USERNAME AND PASS CAN GO TO HOME -->
+				  <form method="POST">{% csrf_token %}
+					<label for="uname"><b><center>Username</center></b></label>
+					<input type="text" placeholder="Username" name="uname" required>
+                    
+                    <label for="fname"><b><center>First Name</center></b></label>
+                    <input type="text" placeholder="First Name" name="fname" required>
+                    
+                    <label for="lname"><b><center>Last Name</center></b></label>
+                    <input type="text" placeholder="Last Name" name="lname" required>
+                    
+                    <label for="email"><b><center>Email Address</center></b></label>
+                    <input type="text" placeholder="Email Address" name="email" required>
+                    
+                    <label for="contact_num"><b><center>Phone Number</center></b></label>
+					<input type="text" placeholder="Phone Number" name="contact_num">
+                    
+                    <label for="password"><b><center>Password</center></b></label>
+                    <input id="password" name="password" type="password" pattern="^\S{6,}$" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Must have at least 6 characters' : ''); if(this.checkValidity()) form.password_two.pattern = this.value;" placeholder="Password" required>
+
+                    <label for="confirm_password"><b><center>Confirm Password</center></b></label>
+                    <input id="confirm_password" name="confirm_password" type="password" confirm_password="^\S{6,}$" oncha nge="this.setCustomValidity(this.validity.patternMismatch ? 'Please enter the same Password as above' : '');" placeholder="Verify Password" required>
+                    
+					<button type="submit">Register</button>  
+                
+                </form>
+                
+            </div>
+</body>
+
+</html>

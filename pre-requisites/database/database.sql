@@ -55,11 +55,18 @@ CREATE TABLE IF NOT EXISTS `gas_detection_db`.`notifications` (
   `room` VARCHAR(255) NULL,
   `gas` VARCHAR(255) NOT NULL,
   `reading` VARCHAR(255) NOT NULL,
+  `time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `devices_device_id` INT NOT NULL,
+  `accounts_acc_id` INT NOT NULL,
   PRIMARY KEY (`notif_id`),
   CONSTRAINT `fk_notifications_devices`
     FOREIGN KEY (`devices_device_id`)
     REFERENCES `gas_detection_db`.`devices` (`device_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_notifications_accounts1`
+    FOREIGN KEY (`accounts_acc_id`)
+    REFERENCES `gas_detection_db`.`accounts` (`acc_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
