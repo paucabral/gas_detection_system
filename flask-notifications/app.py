@@ -31,12 +31,12 @@ def index():
         acc_id = cursor.fetchone()['accounts_acc_id']
         print(room)
         
-        cursor.execute('INSERT INTO notifications(devices_device_id, room, gas, reading, accounts_acc_id) VALUES({}, "{}", "{}", "{}", {})'.format(device_id, room, gas, reading, acc_id))
+        cursor.execute('INSERT INTO notifications(devices_device_id, room, gas, reading, accounts_acc_id) VALUES({}, "{}", "{}", "{} ppm", {})'.format(device_id, room, gas, reading, acc_id))
         conn.commit()
     
     return "POST request success"
 
 
 if __name__ == "__main__":
-    app.run(debug = True)
-    # app.run(debug = True, host= '192.168.43.90')
+    # app.run(debug = True)
+    app.run(debug = True, host= '192.168.254.107')
