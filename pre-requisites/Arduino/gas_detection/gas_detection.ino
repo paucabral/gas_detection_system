@@ -1,10 +1,10 @@
 #include <SoftwareSerial.h>
 #include "SIM900.h"
 #include "sms.h"
-#include <MQ2.h>
+#include "MQ2.h"
 #include "LiquidCrystal_I2C.h"
 
-const int Analog_Input = A0, ledReady = 8, pinBuzzer = ;
+const int Analog_Input = A0, pinBuzzer = 7, ledReady = 8;
 int lpg, co, smoke;
 MQ2 mq2(Analog_Input);
 
@@ -212,20 +212,19 @@ void gas()
 
 void loop()
 {
-  LCD_DRVR.setCursor(0, 0);
-  LCD_DRVR.print(F("Status |> "));
-  LCD_DRVR.print();
-  LCD_DRVR.setCursor(0, 1);
-  LCD_DRVR.print(F("LPG"));
-  String gas = "";
+  // LCD_DRVR.setCursor(0, 0);
 
-  lpg = mq2.readLPG();
-  co = mq2.readCO();
-  smoke = mq2.readSmoke();
+  // String gas = "";
+
+  // lpg = mq2.readLPG();
+  // co = mq2.readCO();
+  // smoke = mq2.readSmoke();
 
   if (lpg == 0 && co == 0)
   {
     //put lcd display of normal
+    // digitalWrite(pinBuzzer, LOW);
+    // LCD_DRVR.print(F("Status |> Normal"));
     post("Normal", smoke);
   }
   else if (lpg > 0 && co == 0)
@@ -233,6 +232,8 @@ void loop()
     //put lcd alert
     //post("LPG", smoke);
     //text();
+    // digitalWrite(pinBuzzer, HIGH);
+    // LCD_DRVR.print(F("High LPG Dtcted!"));
     post("LPG", smoke);
   }
   else if (co > 0 && lpg == 0)
@@ -240,6 +241,8 @@ void loop()
     //put lcd alert
     //post("CO", smoke);
     //text();
+    // digitalWrite(pinBuzzer, HIGH);
+    // LCD_DRVR.print(F("High CO Dtcted! "));
     post("CO", smoke);
   }
   else if (co > 0 && lpg > 0)
@@ -247,6 +250,8 @@ void loop()
     //put lcd alert
     //post("CO and LPG", smoke);
     //text();
+    // digitalWrite(pinBuzzer, HIGH);
+    // LCD_DRVR.print(F("High CO and LPG!"));
     post("CO and LPG", smoke);
   }
 }
